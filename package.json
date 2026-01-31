@@ -1,3 +1,4 @@
+
 {
   "name": "velyx-ai",
   "version": "0.1.0",
@@ -8,19 +9,20 @@
     "start": "next start"
   },
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
-    "next": "latest",
+    "next": "14.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "lucide-react": "latest",
-    "recharts": "latest"
+    "clsx": "latest",
+    "tailwind-merge": "latest"
   },
   "devDependencies": {
-    "tailwindcss": "latest",
-    "postcss": "latest",
-    "autoprefixer": "latest",
-    "typescript": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest"
+    "typescript": "5.3.3",
+    "@types/node": "20.11.19",
+    "@types/react": "18.2.57",
+    "@types/react-dom": "18.2.19",
+    "postcss": "8.4.35",
+    "tailwindcss": "3.4.1",
+    "autoprefixer": "10.4.17"
   }
 }
