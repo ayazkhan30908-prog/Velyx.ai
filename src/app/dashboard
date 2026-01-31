@@ -1,0 +1,95 @@
+import React from 'react';
+import { BarChart, Users, MousePointer2, TrendingUp, Settings, LayoutDashboard, FileText } from 'lucide-react';
+
+export default function Dashboard() {
+  return (
+    <div className="flex h-screen bg-[#020617] text-slate-200 font-sans">
+      {/* Sidebar - Desktop Only */}
+      <aside className="w-64 border-r border-slate-800 p-6 hidden md:flex flex-col">
+        <div className="text-xl font-bold text-white mb-10 tracking-tighter">
+          VELYX<span className="text-indigo-500">.AI</span>
+        </div>
+        <nav className="space-y-2 flex-1">
+          <div className="flex items-center gap-3 p-3 bg-indigo-500/10 text-indigo-400 rounded-xl cursor-pointer font-medium">
+            <LayoutDashboard size={18} /> Overview
+          </div>
+          <div className="flex items-center gap-3 p-3 text-slate-400 hover:bg-slate-800/50 hover:text-white rounded-xl cursor-pointer transition">
+            <Users size={18} /> Leads
+          </div>
+          <div className="flex items-center gap-3 p-3 text-slate-400 hover:bg-slate-800/50 hover:text-white rounded-xl cursor-pointer transition">
+            <FileText size={18} /> Analytics
+          </div>
+        </nav>
+        <div className="pt-6 border-t border-slate-800">
+          <div className="flex items-center gap-3 p-3 text-slate-400 hover:bg-slate-800/50 hover:text-white rounded-xl cursor-pointer transition">
+            <Settings size={18} /> Settings
+          </div>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto p-4 md:p-8">
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+          <div>
+            <h1 className="text-2xl font-bold text-white">Good Morning, Admin</h1>
+            <p className="text-slate-400 text-sm">Here is what's happening with your leads today.</p>
+          </div>
+          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-indigo-500/20 transition-all">
+            Download Report
+          </button>
+        </header>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          {[
+            { label: "Total Visitors", value: "42,892", change: "+12.5%", icon: <MousePointer2 className="text-blue-400" /> },
+            { label: "Active Leads", value: "1,204", change: "+8.2%", icon: <Users className="text-indigo-400" /> },
+            { label: "Conversion Rate", value: "4.8%", change: "+2.1%", icon: <TrendingUp className="text-emerald-400" /> },
+          ].map((stat, i) => (
+            <div key={i} className="bg-slate-900/40 border border-slate-800 p-6 rounded-2xl backdrop-blur-sm">
+              <div className="flex justify-between items-start mb-4">
+                <div className="p-2 bg-slate-800 rounded-lg">{stat.icon}</div>
+                <span className="text-emerald-400 text-xs font-bold bg-emerald-400/10 px-2 py-1 rounded-md">{stat.change}</span>
+              </div>
+              <div className="text-slate-400 text-sm font-medium">{stat.label}</div>
+              <div className="text-2xl font-bold text-white mt-1">{stat.value}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Table Section */}
+        <div className="bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden backdrop-blur-sm">
+          <div className="p-6 border-b border-slate-800">
+            <h3 className="font-bold text-white">Recent High-Intent Leads</h3>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead className="bg-slate-950/50 text-slate-500 text-xs uppercase tracking-wider">
+                <tr>
+                  <th className="p-4 font-semibold">Lead Name</th>
+                  <th className="p-4 font-semibold">Company</th>
+                  <th className="p-4 font-semibold">Score</th>
+                  <th className="p-4 font-semibold">Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800 text-sm text-slate-300">
+                <tr className="hover:bg-white/5 transition">
+                  <td className="p-4 font-medium text-white">Alex Rivera</td>
+                  <td className="p-4">Starlight Agency</td>
+                  <td className="p-4"><span className="bg-indigo-500/20 text-indigo-400 px-2.5 py-1 rounded-lg font-bold text-xs">98/100</span></td>
+                  <td className="p-4 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-emerald-500"></div> Hot Lead</td>
+                </tr>
+                <tr className="hover:bg-white/5 transition">
+                  <td className="p-4 font-medium text-white">Sarah Jenkins</td>
+                  <td className="p-4">Global Tech</td>
+                  <td className="p-4"><span className="bg-indigo-500/20 text-indigo-400 px-2.5 py-1 rounded-lg font-bold text-xs">85/100</span></td>
+                  <td className="p-4 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div> Warm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
